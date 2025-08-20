@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import householdRoutes from "./routes/householdRoutes.js";
 import roomRoutes from "./routes/roomRoutes.js";
+import deviceRoutes from "./routes/deviceRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/household", householdRoutes);
 app.use("/api/rooms", roomRoutes);
+app.use("/api/devices", deviceRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

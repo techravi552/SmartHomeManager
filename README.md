@@ -30,3 +30,5 @@ creat the bacande api (room , houseroom)
 then use api frontent 
 
 crud use
+
+use the extra futer ---device (smart bulb, fan, etc.)
