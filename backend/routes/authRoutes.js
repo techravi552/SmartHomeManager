@@ -1,8 +1,12 @@
-const express = require('express');
+import express from "express";
+import { registerUser, loginUser, getProfile } from "../controllers/authController.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+
 const router = express.Router();
-const { register, login } = require('../controllers/authController');
 
-router.post('/signup', register);
-router.post('/login', login);
+router.post("/signup", registerUser);
+router.post("/login", loginUser);
+router.get("/profile", authMiddleware, getProfile);
 
-module.exports = router;
+// 👇 default export करना ज़रूरी है
+export default router;
