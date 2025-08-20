@@ -1,24 +1,9 @@
 import mongoose from "mongoose";
 
-const householdSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    members: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-  },
-  { timestamps: true }
-);
+const householdSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+});
 
-export default mongoose.model("Household", householdSchema);
+const Household = mongoose.model("Household", householdSchema);
+export default Household;
