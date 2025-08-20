@@ -4,3 +4,7 @@ then creact frontent setup foder name frontend
 
 i have creat bankend part server.js file 
 whose inside api get localhost:5000 run 
+
+user athontication - login , signup
+
+Removed some things from react setup and made it dashboard
