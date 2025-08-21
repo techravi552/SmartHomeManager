@@ -34,3 +34,5 @@ crud use
 use the extra futer ---device (smart bulb, fan, etc.)
 
 extrnal css add
+
+frontant in add file routines then setup bacand code
