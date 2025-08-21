@@ -1,20 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Routines from "./pages/Routines";   // 👈 नया import
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Signup />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/routines"
+          element={
+            <PrivateRoute>
+              <Routines />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 import "./../styles/dashboard.css"; // External CSS import
 
 const Dashboard = () => {
@@ -207,6 +208,8 @@ const Dashboard = () => {
   };
 
   return (
+    <>
+            <Navbar />
     <div className="dashboard">
       <h2>🏠 Smart Home Dashboard</h2>
 
@@ -351,6 +354,7 @@ const Dashboard = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

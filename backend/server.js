@@ -6,6 +6,9 @@ import authRoutes from "./routes/authRoutes.js";
 import householdRoutes from "./routes/householdRoutes.js";
 import roomRoutes from "./routes/roomRoutes.js";
 import deviceRoutes from "./routes/deviceRoutes.js";
+import routineRoutes from "./routes/routineRoutes.js";
+
+import { reloadAllRoutines } from "./utils/routineScheduler.js";
 
 dotenv.config();
 connectDB();
@@ -19,6 +22,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/household", householdRoutes);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/devices", deviceRoutes);
-
+app.use("/api/routines", routineRoutes);
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, async () => {
+  console.log(`Server running on port ${PORT}`);
+  // Load all enabled routines into scheduler on start
+  await reloadAllRoutines();
+});
