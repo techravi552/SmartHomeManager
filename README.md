@@ -43,3 +43,6 @@ creat enardy
 
 how much unit use
 frontend and ackend both creat
+
+
+backend api creat https://smarthomemanager.onrender.com/
