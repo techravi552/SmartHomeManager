@@ -48,7 +48,7 @@ export default function Login() {
 
       {/* 👇 Signup link */}
       <p className="signup-link">
-        Don’t have an account? <Link to="/signup">Signup here</Link>
+        Don’t have an account? <Link to="/">Signup here</Link>
       </p>
     </div>
   );

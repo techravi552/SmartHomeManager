@@ -37,3 +37,9 @@ extrnal css add
 
 frontant in add file routines then setup bacand code
 creat Navbar and Routind setup
+
+
+creat enardy 
+
+how much unit use
+frontend and ackend both creat

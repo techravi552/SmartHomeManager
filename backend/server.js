@@ -7,7 +7,7 @@ import householdRoutes from "./routes/householdRoutes.js";
 import roomRoutes from "./routes/roomRoutes.js";
 import deviceRoutes from "./routes/deviceRoutes.js";
 import routineRoutes from "./routes/routineRoutes.js";
-
+import energyRoutes from "./routes/energyRoutes.js";
 import { reloadAllRoutines } from "./utils/routineScheduler.js";
 
 dotenv.config();
@@ -23,6 +23,7 @@ app.use("/api/household", householdRoutes);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/devices", deviceRoutes);
 app.use("/api/routines", routineRoutes);
+app.use("/api", energyRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);

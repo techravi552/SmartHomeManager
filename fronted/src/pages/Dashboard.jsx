@@ -206,6 +206,35 @@ const Dashboard = () => {
       console.error("Error deleting device:", err);
     }
   };
+  // in Dashboard.jsx
+const handleToggleDevice = async (device) => {
+  const goingOn = device.status !== "on";
+  try {
+    if (goingOn) {
+      await axios.post(
+        `http://localhost:5000/api/devices/${device._id}/usage/start`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    } else {
+      await axios.post(
+        `http://localhost:5000/api/devices/${device._id}/usage/stop`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    }
+    // refetch devices (or optimistically update)
+    const res = await axios.get(
+      `http://localhost:5000/api/devices/${selectedRoom._id}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    setDevices(res.data);
+  } catch (err) {
+    console.error("Error toggling device:", err);
+    alert("Toggle failed");
+  }
+};
+
 
   return (
     <>

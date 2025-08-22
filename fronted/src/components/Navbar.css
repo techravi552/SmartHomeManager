@@ -31,3 +31,28 @@
 .nav-links li a:hover {
   color: #1abc9c;
 }
+/* frontend/src/components/Navbar.css */
+.nav {
+  height: 56px;
+  background: #0f172a;
+  color: #fff;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .brand { font-weight: 700; }
+.nav .links a {
+  color: #cbd5e1;
+  margin-right: 14px;
+  text-decoration: none;
+}
+.nav .links a:hover { color: #fff; }
+.logout {
+  background: #ef4444;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
