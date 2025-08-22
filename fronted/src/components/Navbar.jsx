@@ -17,6 +17,8 @@ export default function Navbar() {
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/routines">Routines</Link>
         <Link to="/energy">Energy</Link>
+        <Link to="/AddDeviceForm">AddDeviceForm</Link>
+        
       </div>
       <button className="logout" onClick={logout}>Logout</button>
     </nav>

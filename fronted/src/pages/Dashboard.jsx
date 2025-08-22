@@ -282,8 +282,8 @@ const handleToggleDevice = async (device) => {
               >
                 {h.name}
               </span>
-              <button onClick={() => setEditHousehold(h)}>✏️</button>
-              <button onClick={() => handleDeleteHousehold(h._id)}>🗑</button>
+              <button onClick={() => setEditHousehold(h)}>Edit</button>
+              <button onClick={() => handleDeleteHousehold(h._id)}>Delete</button>
             </li>
           ))}
         </ul>
@@ -324,8 +324,8 @@ const handleToggleDevice = async (device) => {
                 >
                   {r.name}
                 </span>
-                <button onClick={() => setEditRoom(r)}>✏️</button>
-                <button onClick={() => handleDeleteRoom(r._id)}>🗑</button>
+                <button onClick={() => setEditRoom(r)}>EDIT</button>
+                <button onClick={() => handleDeleteRoom(r._id)}>DELETE</button>
               </li>
             ))}
           </ul>
@@ -375,8 +375,8 @@ const handleToggleDevice = async (device) => {
             {devices.map((d) => (
               <li key={d._id}>
                 {d.name} ({d.type})
-                <button onClick={() => setEditDevice(d)}>✏️</button>
-                <button onClick={() => handleDeleteDevice(d._id)}>🗑</button>
+                <button onClick={() => setEditDevice(d)}>EDIT</button>
+                <button onClick={() => handleDeleteDevice(d._id)}>DELETE</button>
               </li>
             ))}
           </ul>

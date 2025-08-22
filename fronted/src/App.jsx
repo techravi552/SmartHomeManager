@@ -7,9 +7,11 @@ import Dashboard from "./pages/Dashboard";
 import Routines from "./pages/Routines";
 import EnergyReport from "./pages/EnergyReport";
 import PrivateRoute from "./components/PrivateRoute";
+import AddDeviceForm from "./components/AddDeviceForm";
 
 function App() {
   return (
+   
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -36,6 +38,14 @@ function App() {
           element={
             <PrivateRoute>
               <EnergyReport />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/AddDeviceForm"
+          element={
+            <PrivateRoute>
+              <AddDeviceForm />
             </PrivateRoute>
           }
         />
