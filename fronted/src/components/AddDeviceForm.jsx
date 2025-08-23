@@ -1,10 +1,9 @@
 // frontend/components/AddDeviceForm.jsx
 import { useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 
-export default function AddDeviceForm({ token, roomId, onDeviceAdded }) {
-  // Initial states
+export default function AddDeviceForm({ roomId, onDeviceAdded }) {
+  // Default device type and features
   const defaultType = "fan";
   const defaultFeatures = { speed: "Low" };
 
@@ -17,9 +16,8 @@ export default function AddDeviceForm({ token, roomId, onDeviceAdded }) {
     const newType = e.target.value;
     setType(newType);
 
-    // Reset features based on type
     if (newType === "fan") setFeatures({ speed: "Low" });
-    else if (newType === "lamp") setFeatures({ brightness: 50 });
+    else if (newType === "lamp") setFeatures({ brightness: 50, color: "#ffffff" });
     else if (newType === "thermostat") setFeatures({ temperature: 24 });
   };
 
@@ -29,64 +27,63 @@ export default function AddDeviceForm({ token, roomId, onDeviceAdded }) {
   };
 
   // Handle form submit
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post(
-        "https://smarthomemanager.onrender.com/api/devices",
-        { name, type, room: roomId, features },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      onDeviceAdded(res.data);
 
-      // Reset all fields after submit
-      setName("");
-      setType(defaultType);
-      setFeatures(defaultFeatures);
-    } catch (err) {
-      console.error("Error adding device:", err.response?.data || err.message);
-    }
+    const newDevice = {
+      id: Date.now(), // unique id
+      name,
+      type,
+      roomId,
+      features,
+      status: "standby", // default status
+    };
+
+    // Get existing devices from localStorage
+    const devicesLS = JSON.parse(localStorage.getItem("devices")) || [];
+    devicesLS.push(newDevice);
+    localStorage.setItem("devices", JSON.stringify(devicesLS));
+
+    // Call onDeviceAdded if exists
+    if (onDeviceAdded) onDeviceAdded(newDevice);
+
+    // Reset form fields
+    setName("");
+    setType(defaultType);
+    setFeatures(defaultFeatures);
   };
 
   return (
     <>
-      <Navbar />
+       <Navbar />
+  
+    <form onSubmit={handleSubmit} className="p-4 border rounded mt-4">
+      <input
+        type="text"
+        placeholder="Device Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        className="border p-1 m-1"
+      />
 
-      <form onSubmit={handleSubmit} className="p-4 border rounded mt-4">
-        <input
-          type="text"
-          placeholder="Device Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="border p-1 m-1"
-        />
+      <select value={type} onChange={handleTypeChange} className="border p-1 m-1">
+        <option value="fan">Fan</option>
+        <option value="lamp">Lamp</option>
+        <option value="thermostat">Thermostat</option>
+      </select>
 
-        <select
-          value={type}
-          onChange={handleTypeChange}
-          className="border p-1 m-1"
-        >
-          <option value="fan">Fan</option>
-          <option value="lamp">Lamp</option>
-          <option value="thermostat">Thermostat</option>
+      {/* Device Features */}
+      {type === "fan" && (
+        <select name="speed" value={features.speed} onChange={handleFeaturesChange} className="border p-1 m-1">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
         </select>
+      )}
 
-        {/* Features UI */}
-        {type === "fan" && (
-          <select
-            name="speed"
-            value={features.speed}
-            onChange={handleFeaturesChange}
-            className="border p-1 m-1"
-          >
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        )}
-
-        {type === "lamp" && (
+      {type === "lamp" && (
+        <>
           <input
             type="number"
             name="brightness"
@@ -96,24 +93,32 @@ export default function AddDeviceForm({ token, roomId, onDeviceAdded }) {
             max="100"
             className="border p-1 m-1"
           />
-        )}
-
-        {type === "thermostat" && (
           <input
-            type="number"
-            name="temperature"
-            value={features.temperature}
+            type="color"
+            name="color"
+            value={features.color}
             onChange={handleFeaturesChange}
-            min="18"
-            max="30"
             className="border p-1 m-1"
           />
-        )}
+        </>
+      )}
 
-        <button type="submit" className="bg-blue-500 text-white p-1 m-1">
-          Add Device
-        </button>
-      </form>
-    </>
+      {type === "thermostat" && (
+        <input
+          type="number"
+          name="temperature"
+          value={features.temperature}
+          onChange={handleFeaturesChange}
+          min="18"
+          max="30"
+          className="border p-1 m-1"
+        />
+      )}
+
+      <button type="submit" className="bg-blue-500 text-white p-1 m-1">
+        Add Device
+      </button>
+    </form>
+      </>
   );
 }

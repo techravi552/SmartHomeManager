@@ -8,6 +8,9 @@ import Routines from "./pages/Routines";
 import EnergyReport from "./pages/EnergyReport";
 import PrivateRoute from "./components/PrivateRoute";
 import AddDeviceForm from "./components/AddDeviceForm";
+import Emargensy from "./pages/Emargensy";
+import DeviceStatus from "./pages/DeviceStatus";
+import DeviceGroups from "./components/DeviceGroups";
 
 function App() {
   return (
@@ -41,6 +44,32 @@ function App() {
             </PrivateRoute>
           }
         />
+         <Route
+          path="/Emargensy"
+          element={
+            <PrivateRoute>
+              <Emargensy />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/DeviceStatus"
+          element={
+            <PrivateRoute>
+              <DeviceStatus />
+            </PrivateRoute>
+          }
+        />
+          <Route
+          path="/DeviceGroups"
+          element={
+            <PrivateRoute>
+              <DeviceGroups />
+            </PrivateRoute>
+          }
+        />
+        
+        
         <Route
           path="/AddDeviceForm"
           element={
