@@ -24,7 +24,7 @@ export default function Signup() {
 
   return (
     <div className="signup-container">
-      <h2>Signup</h2>
+      <h2  style={{ color: "black" }} > Signup</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -54,7 +54,7 @@ export default function Signup() {
       </form>
 
       {/* 👇 Already account? go to login */}
-      <p className="login-link">
+      <p className="login-link"  style={{ color: "black" }}>
         Already have an account? <Link to="/login">Login here</Link>
       </p>
     </div>

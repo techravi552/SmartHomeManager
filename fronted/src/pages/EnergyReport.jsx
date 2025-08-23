@@ -1,10 +1,13 @@
 // frontend/src/pages/EnergyReport.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
+
+
 import Navbar from "../components/Navbar";
 import "../styles/Energy.css";
 
-const API = "http://localhost:5000/api";
+const API = "https://smarthomemanager.onrender.com/api";
 const authHeader = () => ({
   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 });
@@ -138,9 +141,9 @@ export default function EnergyReport() {
           ) : (
             <>
               <div className="summary">
-                <b>Total (kWh):</b>{" "}
+                <b style={{ color: "black" }} >Total (kWh):</b>{" "}
                 {Number(data.totalKWh || 0).toFixed(3)} &nbsp;
-                <small>
+                <small style={{ color: "black" }}>
                   {new Date(data.from).toLocaleDateString()} →{" "}
                   {new Date(data.to).toLocaleDateString()}
                 </small>

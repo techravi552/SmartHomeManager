@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar"; // 👈 Navbar import
 import "../styles/Routines.css";
 
-const API = "http://localhost:5000/api";
+const API = "https://smarthomemanager.onrender.com/api";
 const authHeader = () => ({
   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 });

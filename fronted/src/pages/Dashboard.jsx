@@ -25,7 +25,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchHouseholds = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/household", {
+        const res = await axios.get("https://smarthomemanager.onrender.com/api/household", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setHouseholds(res.data);
@@ -41,7 +41,7 @@ const Dashboard = () => {
     const fetchRooms = async () => {
       if (!selectedHousehold) return;
       try {
-        const res = await axios.get("http://localhost:5000/api/rooms", {
+        const res = await axios.get("https://smarthomemanager.onrender.com/api/rooms", {
           headers: { Authorization: `Bearer ${token}` },
           params: { householdId: selectedHousehold._id },
         });
@@ -59,7 +59,7 @@ const Dashboard = () => {
       if (!selectedRoom) return;
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/devices/${selectedRoom._id}`,
+          `https://smarthomemanager.onrender.com/api/devices/${selectedRoom._id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setDevices(res.data);
@@ -75,7 +75,7 @@ const Dashboard = () => {
     if (!newHousehold) return;
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/household",
+        "https://smarthomemanager.onrender.com/api/household",
         { name: newHousehold },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -90,7 +90,7 @@ const Dashboard = () => {
     if (!editHousehold) return;
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/household/${editHousehold._id}`,
+        `https://smarthomemanager.onrender.com/api/household/${editHousehold._id}`,
         { name: editHousehold.name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -105,7 +105,7 @@ const Dashboard = () => {
 
   const handleDeleteHousehold = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/household/${id}`, {
+      await axios.delete(`https://smarthomemanager.onrender.com/api/household/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHouseholds(households.filter((h) => h._id !== id));
@@ -124,7 +124,7 @@ const Dashboard = () => {
     if (!newRoom || !selectedHousehold) return;
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/rooms",
+        "https://smarthomemanager.onrender.com/api/rooms",
         { name: newRoom, householdId: selectedHousehold._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -139,7 +139,7 @@ const Dashboard = () => {
     if (!editRoom) return;
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/rooms/${editRoom._id}`,
+        `https://smarthomemanager.onrender.com/api/rooms/${editRoom._id}`,
         { name: editRoom.name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -152,7 +152,7 @@ const Dashboard = () => {
 
   const handleDeleteRoom = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/rooms/${id}`, {
+      await axios.delete(`https://smarthomemanager.onrender.com/api/rooms/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRooms(rooms.filter((r) => r._id !== id));
@@ -170,7 +170,7 @@ const Dashboard = () => {
     if (!newDevice.name || !newDevice.type || !selectedRoom) return;
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/devices",
+        "https://smarthomemanager.onrender.com/api/devices",
         { ...newDevice, roomId: selectedRoom._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -185,7 +185,7 @@ const Dashboard = () => {
     if (!editDevice) return;
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/devices/${editDevice._id}`,
+        `https://smarthomemanager.onrender.com/api/devices/${editDevice._id}`,
         { name: editDevice.name, type: editDevice.type },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -198,7 +198,7 @@ const Dashboard = () => {
 
   const handleDeleteDevice = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/devices/${id}`, {
+      await axios.delete(`https://smarthomemanager.onrender.com/api/devices/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDevices(devices.filter((d) => d._id !== id));
@@ -212,20 +212,20 @@ const handleToggleDevice = async (device) => {
   try {
     if (goingOn) {
       await axios.post(
-        `http://localhost:5000/api/devices/${device._id}/usage/start`,
+        `https://smarthomemanager.onrender.com/api/devices/${device._id}/usage/start`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
     } else {
       await axios.post(
-        `http://localhost:5000/api/devices/${device._id}/usage/stop`,
+        `https://smarthomemanager.onrender.com/api/devices/${device._id}/usage/stop`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
     }
     // refetch devices (or optimistically update)
     const res = await axios.get(
-      `http://localhost:5000/api/devices/${selectedRoom._id}`,
+      `https://smarthomemanager.onrender.com/api/devices/${selectedRoom._id}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     setDevices(res.data);
@@ -270,7 +270,7 @@ const handleToggleDevice = async (device) => {
         <ul>
           {households.map((h) => (
             <li key={h._id}>
-              <span
+              <span style={{ color: "black" }}
                 onClick={() => {
                   setSelectedHousehold(h);
                   setSelectedRoom(null);
@@ -280,7 +280,7 @@ const handleToggleDevice = async (device) => {
                   selectedHousehold?._id === h._id ? "selected" : ""
                 }
               >
-                {h.name}
+                {h.name} <samp>   ⬅️ click and creat room</samp>
               </span>
               <button onClick={() => setEditHousehold(h)}>Edit</button>
               <button onClick={() => handleDeleteHousehold(h._id)}>Delete</button>
@@ -318,11 +318,11 @@ const handleToggleDevice = async (device) => {
           <ul>
             {rooms.map((r) => (
               <li key={r._id}>
-                <span
+                <span style={{ color: "black" }}
                   onClick={() => setSelectedRoom(r)}
                   className={selectedRoom?._id === r._id ? "selected" : ""}
                 >
-                  {r.name}
+                  {r.name} <samp> ⬅️ click and creat Devices</samp>
                 </span>
                 <button onClick={() => setEditRoom(r)}>EDIT</button>
                 <button onClick={() => handleDeleteRoom(r._id)}>DELETE</button>

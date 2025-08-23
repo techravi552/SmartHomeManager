@@ -33,7 +33,7 @@ export default function AddDeviceForm({ token, roomId, onDeviceAdded }) {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/devices",
+        "https://smarthomemanager.onrender.com/api/devices",
         { name, type, room: roomId, features },
         { headers: { Authorization: `Bearer ${token}` } }
       );
