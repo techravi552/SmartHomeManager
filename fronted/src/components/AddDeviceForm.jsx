@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 
 export default function AddDeviceForm({ roomId, onDeviceAdded }) {
-  // Default device type and features
+
   const defaultType = "fan";
   const defaultFeatures = { speed: "Low" };
 
@@ -36,7 +36,7 @@ export default function AddDeviceForm({ roomId, onDeviceAdded }) {
       type,
       roomId,
       features,
-      status: "standby", // default status
+      status: "standby", 
     };
 
     // Get existing devices from localStorage

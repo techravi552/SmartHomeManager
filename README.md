@@ -46,3 +46,6 @@ frontend and ackend both creat
 
 
 backend api creat https://smarthomemanager.onrender.com/
+
+creat all every futear
+and run npm run build

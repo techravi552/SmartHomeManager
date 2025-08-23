@@ -26,7 +26,7 @@ app.use("/api/routines", routineRoutes);
 app.use("/api", energyRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
-  console.log(`Server running on port ${PORT}`);
-  // Load all enabled routines into scheduler on start
+  console.log(`Server running on port ${PORT}`)
+
   await reloadAllRoutines();
 });
