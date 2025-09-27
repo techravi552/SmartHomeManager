@@ -49,3 +49,5 @@ backend api creat https://smarthomemanager.onrender.com/
 
 creat all every futear
 and run npm run build
+
+done project 
