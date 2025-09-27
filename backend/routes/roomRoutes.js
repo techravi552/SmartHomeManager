@@ -4,7 +4,7 @@ import { createRoom, getRooms, updateRoom, deleteRoom } from "../controllers/roo
 
 const router = express.Router();
 
-router.post("/", authMiddleware, createRoom);
+router.post("/", authMiddleware, createRoom)
 router.get("/:householdId", authMiddleware, getRooms);
 router.put("/:id", authMiddleware, updateRoom);
 router.delete("/:id", authMiddleware, deleteRoom);

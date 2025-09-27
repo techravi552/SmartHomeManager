@@ -51,5 +51,5 @@ export default function Login() {
         Don’t have an account? <Link to="/">Signup here</Link>
       </p>
     </div>
-  );
+  )
 }

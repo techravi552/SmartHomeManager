@@ -57,7 +57,6 @@ export const getEnergyReport = async (req, res) => {
     const fromDate = toDate(from, new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)); // default last 7d
     const toDateVal = toDate(to, new Date());
 
-    // Filter devices by household/room if present
     const roomMatch = {};
     if (roomId) roomMatch._id = new mongoose.Types.ObjectId(roomId);
     if (householdId) roomMatch.household = new mongoose.Types.ObjectId(householdId);

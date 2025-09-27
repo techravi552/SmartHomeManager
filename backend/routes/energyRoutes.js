@@ -6,7 +6,7 @@ import { startUsage, stopUsage, getEnergyReport } from "../controllers/energyCon
 const router = express.Router();
 
 router.post("/devices/:id/usage/start", authMiddleware, startUsage);
-router.post("/devices/:id/usage/stop", authMiddleware, stopUsage);
+router.post("/devices/:id/usage/stop", authMiddleware, stopUsage)
 router.get("/energy-usage", authMiddleware, getEnergyReport);
 
 export default router;

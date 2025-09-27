@@ -15,7 +15,7 @@ export const authMiddleware = async (req, res, next) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    next();
+    next()
   } catch (error) {
     res.status(401).json({ message: "Token is not valid" });
   }

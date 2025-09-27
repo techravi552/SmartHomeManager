@@ -28,5 +28,5 @@ export default function Navbar() {
       </div>
       <button className="logout" onClick={logout}>Logout</button>
     </nav>
-  );
+  )
 }

@@ -85,7 +85,7 @@ export async function reloadAllRoutines(userId = null) {
 
   const routines = await Routine.find(filter);
   for (const r of routines) {
-    await scheduleRoutine(r);
+    await scheduleRoutine(r)
   }
   console.log(`[Routine] Scheduled ${routines.length} routines`);
 }

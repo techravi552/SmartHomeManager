@@ -7,6 +7,6 @@ const router = express.Router();
 router.post("/", authMiddleware, createHousehold);
 router.get("/", authMiddleware, getHouseholds);
 router.put("/:id", authMiddleware, updateHousehold);
-router.delete("/:id", authMiddleware, deleteHousehold);
+router.delete("/:id", authMiddleware, deleteHousehold)
 
 export default router;

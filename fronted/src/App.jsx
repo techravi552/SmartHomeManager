@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Routines from "./pages/Routines";
 import EnergyReport from "./pages/EnergyReport";
 import PrivateRoute from "./components/PrivateRoute";
-import AddDeviceForm from "./components/AddDeviceForm";
+import AddDeviceForm from "./components/AddDeviceForm"
 import Emargensy from "./pages/Emargensy";
 import DeviceStatus from "./pages/DeviceStatus";
 import DeviceGroups from "./components/DeviceGroups";

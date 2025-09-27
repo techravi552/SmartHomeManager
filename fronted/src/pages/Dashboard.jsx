@@ -177,7 +177,7 @@ const Dashboard = () => {
       setDevices([...devices, res.data]);
       setNewDevice({ name: "", type: "" });
     } catch (err) {
-      console.error("Error adding device:", err);
+      console.error("Error adding device:", err)
     }
   };
 

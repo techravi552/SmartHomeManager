@@ -6,4 +6,4 @@ const householdSchema = new mongoose.Schema({
 });
 
 const Household = mongoose.model("Household", householdSchema);
-export default Household;
+export default Household

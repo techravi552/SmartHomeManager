@@ -17,7 +17,7 @@ export const createRoom = async (req, res) => {
   }
 };
 
-// Get Rooms by Household
+
 export const getRooms = async (req, res) => {
   try {
     const { householdId } = req.params;

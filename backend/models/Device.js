@@ -14,7 +14,7 @@ const usageSessionSchema = new mongoose.Schema(
 const deviceSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    type: { type: String, required: true }, // fan, lamp, thermostat
+    type: { type: String, required: true }, 
     status: { type: String, enum: ["on", "off"], default: "off" },
     room: { type: mongoose.Schema.Types.ObjectId, ref: "Room", required: true },
     powerRating: { type: Number, default: 60 },

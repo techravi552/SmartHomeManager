@@ -40,7 +40,7 @@ export default function AddDeviceForm({ roomId, onDeviceAdded }) {
     };
 
     // Get existing devices from localStorage
-    const devicesLS = JSON.parse(localStorage.getItem("devices")) || [];
+    const devicesLS = JSON.parse(localStorage.getItem("devices")) || []
     devicesLS.push(newDevice);
     localStorage.setItem("devices", JSON.stringify(devicesLS));
 

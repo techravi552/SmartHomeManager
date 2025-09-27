@@ -19,7 +19,7 @@ const RoutineSchema = new mongoose.Schema(
     payload: {
       status: { type: String, enum: ["on", "off"], required: true },
     },
-    // Optional device type filter(s), e.g. ["light","fan"]
+    
     deviceTypes: [{ type: String }],
     enabled: { type: Boolean, default: true },
   },

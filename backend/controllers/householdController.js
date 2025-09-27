@@ -40,7 +40,7 @@ export const updateHousehold = async (req, res) => {
 // Delete household
 export const deleteHousehold = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params
     const household = await Household.findOneAndDelete({ _id: id, user: req.user.id });
     if (!household) return res.status(404).json({ message: "Household not found" });
     res.json({ message: "Household deleted" });

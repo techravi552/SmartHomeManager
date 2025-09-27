@@ -15,6 +15,6 @@ router.use(authMiddleware);
 router.post("/", createRoutine);
 router.get("/", listRoutines);
 router.put("/:id", updateRoutine);
-router.delete("/:id", deleteRoutine);
+router.delete("/:id", deleteRoutine)
 
 export default router;
